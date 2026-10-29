@@ -8,11 +8,12 @@ print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 print(f"{datetime.now():%H:%M:%S}")
 print("Pi Dongyan")
 
-# 原图路径（data\原图 里有中文，imread 读不了，下面有兜底处理）
-src = r"D:\CQU\CQuick\training program week1\W1_皮董彦_视觉算法\data\原图\allec-gomes-xnRg3xDcNnE-unsplash.jpg"
+# 原图路径（BASE = 个人目录根；原图放在 data/images/，来源 Unsplash，作者 allec gomes）
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+src = os.path.join(BASE, "data", "images", "allec-gomes-xnRg3xDcNnE-unsplash.jpg")
 
-# 提交目录
-out_dir = r"D:\CQU\CQuick\cquick-recruitment\视觉组\week1\Pi Dongyan"
+# 输出目录：outputs/task2/
+out_dir = os.path.join(BASE, "outputs", "task2")
 os.makedirs(out_dir, exist_ok=True)
 
 MAX_SIDE = 1600          # 输出统一缩放的长边像素
@@ -80,7 +81,7 @@ for ch, label in [(H_vis, "Hue 0-179"), (S, "Saturation"), (V, "Value")]:
     cv2.putText(p, label, (12, 38), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2)
     panels.append(p)
 hsv_vis = np.hstack(panels)
-save("03_hsv_or_mask.png", hsv_vis)
+save("03_hsv_channels.png", hsv_vis)
 
 # 阈值分割
 thr_a = 120

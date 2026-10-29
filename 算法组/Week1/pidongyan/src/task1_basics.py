@@ -9,8 +9,9 @@ print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 print(f"{datetime.now():%H:%M:%S}")
 print("Pi Dongyan")
 
-# 读图片
-path = r"D:\CQU\CQuick\training program week1\W1_皮董彦_视觉算法\data\原图\allec-gomes-xnRg3xDcNnE-unsplash.jpg"
+# 读图片（BASE = 个人目录根，脚本在任意机器、任意路径下 clone 后都能直接跑）
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+path = os.path.join(BASE, "data", "images", "allec-gomes-xnRg3xDcNnE-unsplash.jpg")
 USE_IMSHOW = True
 
 img = cv2.imread(path)
@@ -54,7 +55,7 @@ print(f"  同一个像素转成 RGB 后 = {pixel_rgb[0, 0]} ")
 
 
 # 显示图片
-out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "outputs", "task2")
+out_dir = os.path.join(BASE, "outputs", "task1")
 os.makedirs(out_dir, exist_ok=True)
 
 if USE_IMSHOW:

@@ -3,6 +3,22 @@
 注：第一周的时候不会写README，22号飞书上提交的内容不是很完善，本周阅读考核细则之后，新写的README，其余代码文件和截图上周
 没有添加自己的姓名和时间戳，这次新交的week1的文件补上了姓名和时间戳。
 
+## 零、运行方式
+
+依赖：Python 3.10+，`pip install opencv-python numpy`
+
+在本目录（`算法组/Week1/pidongyan/`）下运行：
+
+```bash
+python src/task0_env_check.py     # 任务一·环境自检：打印系统/Python/OpenCV/NumPy 版本
+python src/task1_basics.py        # 任务二·读图与信息分析：shape/dtype/像素值/显示（弹窗按任意键退出）
+python src/task2_processing.py    # 任务三·图像处理：缩放→灰度→HSV通道→双阈值对比，结果存 outputs/task2/
+```
+
+- 所有路径都是相对本目录的相对路径，clone 后无需修改即可运行；
+- 测试图在 `data/images/`（来源 Unsplash，作者 allec gomes，免费授权）；
+- 因为目录名含中文，`cv2.imread/imwrite` 在 Windows 下会失败，脚本统一用 `np.fromfile + cv2.imdecode` 读、`cv2.imencode + tofile` 写来兜底；
+- task3（颜色目标提取与轮廓定位）本周未完成，计划下周补上。
 
 一、任务一：环境自检
 1.环境信息记录
